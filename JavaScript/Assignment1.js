@@ -1,0 +1,1 @@
+console.log("Assignment1 js has run. (second script)");

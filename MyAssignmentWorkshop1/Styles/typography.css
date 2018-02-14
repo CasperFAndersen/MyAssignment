@@ -1,0 +1,14 @@
+.link {
+  color: #DDD;
+  text-decoration: underline;
+  border-color: #DDD;
+}
+.h2 {
+  color: red;
+}
+.developer-cards {
+  font-size: 1cm;
+}
+.developer-cards .card-text {
+  font-size: 1cm;
+}

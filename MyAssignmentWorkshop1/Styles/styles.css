@@ -1,0 +1,33 @@
+.link {
+  color: #DDD;
+  text-decoration: underline;
+  border-color: #DDD;
+}
+.h2 {
+  color: red;
+}
+.developer-cards .card-text {
+  font-size: 10cm;
+}
+.mainfont {
+  color: #333;
+}
+html {
+  background-color: #DDD;
+  font-family: OpenSans, verdana, sans-serif;
+  background-color: white;
+}
+.highlight {
+  background-color: white;
+}
+.mainsection {
+  background-color: #DDD;
+}
+.mainsection .p {
+  color: white;
+}
+.mainsection .a {
+  text-decoration: underline;
+  color: #DDD;
+  background-color: #ABCDEF;
+}

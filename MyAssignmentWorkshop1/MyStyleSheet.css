@@ -1,0 +1,38 @@
+.HeaderText {
+    color: red;
+    text-align: center;
+    font-size: 1cm;
+    font-family: cursive;
+    background-image: url(pexels-photo-280264.jpeg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#HomeButton{
+    
+}
+
+nav{
+    border-spacing: 10px;
+    padding: 10px;
+    background-color: #aaaaaa;
+    background-size: 10cm;
+    border: 1px dashed #aaaaaa;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+p{
+    font-weight: bolder;
+    color: blue;
+}
+
+nav a:link {color:#FF0000;} /*unvisited link*/
+nav a:visited {color:#00FF00;}  /* visited link */
+nav a:hover {color:#FF00FF;}  /* mouse over link */
+nav a:active {color:#0000FF;}  /* selected link */
+
+
+

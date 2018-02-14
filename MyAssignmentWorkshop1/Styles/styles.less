@@ -1,0 +1,38 @@
+
+
+@import "typography"; //import of stylesheet typography
+@import "colors"; //import of stylesheet colors
+
+@basecolor: #DDD;
+@fancybgcolor: #ABCDEF;
+@font: OpenSans, verdana, sans-serif;
+@highlightcolor: white; //variable
+
+
+html{   
+    background-color: @basecolor;
+    font-family: @font;  
+    .highlight //mixin   
+}
+
+.highlight
+{
+    background-color:@highlightcolor;
+}
+
+.mainsection
+{
+    background-color:@basecolor;
+    .p{ //nested queries
+        color:@highlightcolor;
+    }
+    .a{
+        text-decoration: underline;
+        color:@alternativecolor;
+        background-color:@fancybgcolor;        
+    }
+}
+
+
+
+
