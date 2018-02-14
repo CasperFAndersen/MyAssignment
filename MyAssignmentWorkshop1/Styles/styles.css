@@ -6,8 +6,14 @@
 .h2 {
   color: red;
 }
-.developer-cards .card-text {
-  font-size: 10cm;
+h2.developer-cards#developer-cards {
+  font-size: 1px;
+}
+h2.developer-cards#developer-cards p.card-text#card-text {
+  font-size: 1px;
+}
+section {
+  color: red;
 }
 .mainfont {
   color: #333;
