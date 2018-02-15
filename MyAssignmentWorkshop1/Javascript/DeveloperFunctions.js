@@ -12,6 +12,12 @@ function loadTablesWithCreates() {
     oReq.send();
 }
 
+function addDeveloperToDatabase() {
+    var firstName1 = document.getElementById("inputName");
+    var lastName1 = document.getElementById("inputLastName");
+    var email1 = document.getElementById("inputEmail4");
+    console.log(firstName1 + " " + lastName1 + " " + email1);
+}
 
 function loadTableWithDevelopers() {
     var listOfDevelopers = JSON.parse(this.responseText);
@@ -22,9 +28,9 @@ function loadTableWithDevelopers() {
         const td2 = document.createElement('td');
         const td3 = document.createElement('td');
         const td4 = document.createElement('td');
-        td1.appendChild(document.createTextNode(listOfDevelopers[i].Email));
-        td2.appendChild(document.createTextNode(listOfDevelopers[i].Id));
-        td3.appendChild(document.createTextNode(listOfDevelopers[i].Name));
+        td1.appendChild(document.createTextNode(listOfDevelopers[i].Id));
+        td2.appendChild(document.createTextNode(listOfDevelopers[i].Name));
+        td3.appendChild(document.createTextNode(listOfDevelopers[i].Email));
         td4.appendChild(document.createTextNode(listOfDevelopers[i].Tasks));
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -53,10 +59,10 @@ function getDevs() {
 
 function centiLoad() {
     var dataFromGet = JSON.parse(this.responseText);
-    var table = document.getElementById("table-of-developers1");
+    var table2 = document.getElementById("table-of-developers1");
     for (let i = 0; i < dataFromGet.length; i++) {
 
-        var row = table.insertRow(table.rows.length);
+        var row = table2.insertRow(table2.rows.length);
         var cellId = row.insertCell(0); //ID
         var cellName = row.insertCell(1); //NAME
         var cellEmail = row.insertCell(2); //EMAIL
@@ -90,10 +96,10 @@ function jsonToUi() {
     }
 
     //Create dynamic table
-    var table = document.createElement("table")
+    var table1 = document.createElement("table")
 
     //Create HTML table header row using the extracted headers above
-    var tr = table.insertRow(-1); //Table row 
+    var tr = table1.insertRow(-1); //Table row 
 
     for (let i = 0; i < col.length; i++) {
         var th = document.createElement("th"); //Table header
@@ -103,7 +109,7 @@ function jsonToUi() {
 
     //Add JSON data to the table as rows
     for (let i = 0; i < developerList.length; i++) {
-        tr = table.insertRow(-1);
+        tr = table1.insertRow(-1);
 
         for (let j = 0; j < col.length; j++) {
             var tabCell = tr.insertCell(-1);
@@ -112,10 +118,10 @@ function jsonToUi() {
     }
 
     //Add the newly created table with JSON data to a container
-    table.setAttribute('class', 'table table-striped');
+    table1.setAttribute('class', 'table table-striped');
     var divContainer = document.getElementById("tableDiv");
     divContainer.innerHTML = "";
-    divContainer.appendChild(table);
+    divContainer.appendChild(table1);
 }
 
 function stefanTable() {
