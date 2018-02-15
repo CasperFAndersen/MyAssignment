@@ -6,8 +6,11 @@
 .h2 {
   color: red;
 }
+.developer-cards {
+  font-size: 1cm;
+}
 .developer-cards .card-text {
-  font-size: 10cm;
+  font-size: 1cm;
 }
 .mainfont {
   color: #333;
