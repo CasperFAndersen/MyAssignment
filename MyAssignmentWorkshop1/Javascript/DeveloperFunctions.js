@@ -5,38 +5,65 @@ window.onload = function () {
     // stefanTable();
 };
 
-function loadTablesWithCreates() {
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", loadTableWithDevelopers);
-    oReq.open("GET", "http://dm.sof60.dk:84/api/Developer");
-    oReq.send();
-}
+var url = "http://dm.sof60.dk:84/api/Developer";
+
 
 function addDeveloperToDatabase1() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://dm.sof60.dk:84/api/Developer");
+    xhr.open("POST", url);
     xhr.setRequestHeader("Content-type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-            // console.log(json.email + ", " + json.password);
-        }
-    };
-    var data = JSON.stringify({ "name": "testing", "email": "hey@mail.com", "task": "" });
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //         var json = JSON.parse(xhr.responseText);
+    //         // console.log(json.email + ", " + json.password);
+    //     }
+    // };
+    var data = JSON.stringify({
+        "Name": "Teste2r",
+        "Email": "tester@test2er.dk",
+        "Tasks": []
+    });
     xhr.send(data);
 }
 
-function addDeveloperToDatabase() {
-    var firstName1 = document.getElementById("inputName").value;
-    var lastName1 = document.getElementById("inputLastName").value;
-    var email1 = document.getElementById("inputEmail4").value;
-    // var devObject = {
-    //     Name = firstName1,
-    //     Email = email1,
-    //     Tasks = null
-    // };
-    return devObject;
-    console.log(firstName1 + " " + lastName1 + " " + email1);
+function addDeveloperToDatabase2() {
+    var data = {};
+    data.name = document.getElementById("inputName").value + document.getElementById("inputLastName").value;;
+    data.lastname = document.getElementById("inputEmail4").value;
+    var json = JSON.stringify(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    xhr.onload = function () {
+        var users = JSON.parse(xhr.responseText);
+        if (xhr.readyState == 4 && xhr.status == "201") {
+            console.table(users);
+        } else {
+            console.error(users);
+        }
+    }
+    xhr.send(json);
+}
+
+// function addDeveloperToDatabase() {
+//     var firstName1 = document.getElementById("inputName").value;
+//     var lastName1 = document.getElementById("inputLastName").value;
+//     var email1 = document.getElementById("inputEmail4").value;
+//     // var devObject = {
+//     //     Name = firstName1,
+//     //     Email = email1,
+//     //     Tasks = null
+//     // };
+//     return devObject;
+//     console.log(firstName1 + " " + lastName1 + " " + email1);
+// }
+
+function loadTablesWithCreates() {
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", loadTableWithDevelopers);
+    oReq.open("GET", url);
+    oReq.send();
 }
 
 function loadTableWithDevelopers() {
