@@ -20,14 +20,27 @@ html {
   font-family: OpenSans, verdana, sans-serif;
   background-color: white;
 }
-body div img#BannerPicture {
-  position: absolute;
-  top: 90px;
-  background-attachment: fixed;
+body#homeBody {
+  /* Bottom right text */
 }
-body div p#HeaderText {
-  font-size: 10px;
-  color: red;
+body#homeBody .container {
+  position: relative;
+  left: 0px;
+}
+body#homeBody div.container div.text-block {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+body#homeBody div.welcomeTextClass p#welcomeText {
+  color: blue;
+  top: 10px;
+}
+body#homeBody nav.navbar {
+  top: 0px;
 }
 .highlight {
   background-color: white;
