@@ -20,10 +20,13 @@ html {
   font-family: OpenSans, verdana, sans-serif;
   background-color: white;
 }
-header img#BannerPicture {
+body div img#BannerPicture {
   position: absolute;
+  top: 90px;
+  background-attachment: fixed;
 }
-header p#HeaderText {
+body div p#HeaderText {
+  font-size: 10px;
   color: red;
 }
 .highlight {
