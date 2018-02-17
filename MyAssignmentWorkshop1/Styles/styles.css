@@ -7,10 +7,10 @@
   color: red;
 }
 .developer-cards {
-  font-size: 1cm;
+  font-size: 15px;
 }
 .developer-cards .card-text {
-  font-size: 1cm;
+  font-size: 15px;
 }
 .mainfont {
   color: #333;
@@ -19,6 +19,12 @@ html {
   background-color: #DDD;
   font-family: OpenSans, verdana, sans-serif;
   background-color: white;
+}
+header img#BannerPicture {
+  position: absolute;
+}
+header p#HeaderText {
+  color: red;
 }
 .highlight {
   background-color: white;
