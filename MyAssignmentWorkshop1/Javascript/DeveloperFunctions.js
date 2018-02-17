@@ -12,10 +12,30 @@ function loadTablesWithCreates() {
     oReq.send();
 }
 
+function addDeveloperToDatabase1() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://dm.sof60.dk:84/api/Developer");
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            // console.log(json.email + ", " + json.password);
+        }
+    };
+    var data = JSON.stringify({ "name": "testing", "email": "hey@mail.com", "task": "" });
+    xhr.send(data);
+}
+
 function addDeveloperToDatabase() {
-    var firstName1 = document.getElementById("inputName");
-    var lastName1 = document.getElementById("inputLastName");
-    var email1 = document.getElementById("inputEmail4");
+    var firstName1 = document.getElementById("inputName").value;
+    var lastName1 = document.getElementById("inputLastName").value;
+    var email1 = document.getElementById("inputEmail4").value;
+    // var devObject = {
+    //     Name = firstName1,
+    //     Email = email1,
+    //     Tasks = null
+    // };
+    return devObject;
     console.log(firstName1 + " " + lastName1 + " " + email1);
 }
 
@@ -130,4 +150,5 @@ function stefanTable() {
     oReq.open("GET", "http://dm.sof60.dk:84/api/Developer");
     oReq.send();
 }
+
 
