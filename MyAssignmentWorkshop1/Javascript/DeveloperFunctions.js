@@ -26,25 +26,25 @@ function addDeveloperToDatabase1() {
     xhr.send(data);
 }
 
-function addDeveloperToDatabase2() {
-    var data = {};
-    data.name = document.getElementById("inputName").value + document.getElementById("inputLastName").value;;
-    data.lastname = document.getElementById("inputEmail4").value;
-    var json = JSON.stringify(data);
+// function addDeveloperToDatabase2() {
+//     var data = {};
+//     data.name = document.getElementById("inputName").value + document.getElementById("inputLastName").value;;
+//     data.lastname = document.getElementById("inputEmail4").value;
+//     var json = JSON.stringify(data);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    xhr.onload = function () {
-        var users = JSON.parse(xhr.responseText);
-        if (xhr.readyState == 4 && xhr.status == "201") {
-            console.table(users);
-        } else {
-            console.error(users);
-        }
-    }
-    xhr.send(json);
-}
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("POST", url, true);
+//     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//     xhr.onload = function () {
+//         var users = JSON.parse(xhr.responseText);
+//         if (xhr.readyState == 4 && xhr.status == "201") {
+//             console.table(users);
+//         } else {
+//             console.error(users);
+//         }
+//     }
+//     xhr.send(json);
+// }
 
 // function addDeveloperToDatabase() {
 //     var firstName1 = document.getElementById("inputName").value;
