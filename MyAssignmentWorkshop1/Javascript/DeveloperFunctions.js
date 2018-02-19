@@ -3,8 +3,6 @@ window.onload = function () {
     // loadTablesWithCreates();
     // getDevs();
     // stefanTable();
-    testCookie();
-    cookie();
 };
 
 //Creating a cookie
@@ -44,20 +42,23 @@ var url = "http://dm.sof60.dk:84/api/Developer";
 //     console.log(firstName1 + " " + lastName1 + " " + email1);
 // }
 
+function loadTablesWithCreatesJQuery() {
+    $(document).ready(function () {
+        $("tableCreateElements").click(function () {
+            $.get(url, function (data, status) {
+                window.alert("Data: " + data + "\nStatus: " + status);
+                console.log("done");
+            });
+        });
+    });
+}
+
 function loadTablesWithCreates() {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", loadTableWithDevelopers);
     oReq.open("GET", url);
     oReq.send();
 }
-
-// function loadTablesWithCreatesJQuery() {
-//     $(document).ready(function () {
-//         $.get(url, function (data) {
-//             window.alert("Data Loaded: " + data)
-//         });
-//     });
-// }
 
 
 function loadTableWithDevelopers() {
@@ -178,5 +179,6 @@ function testCookie() {
     alert(document.cookie);
     console.log(document.cookie);
 }
+
 
 
