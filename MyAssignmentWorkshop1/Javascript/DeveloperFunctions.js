@@ -7,25 +7,6 @@ window.onload = function () {
 
 var url = "http://dm.sof60.dk:84/api/Developer";
 
-
-function addDeveloperToDatabase1() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.setRequestHeader("Content-type", "application/json");
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4 && xhr.status === 200) {
-    //         var json = JSON.parse(xhr.responseText);
-    //         // console.log(json.email + ", " + json.password);
-    //     }
-    // };
-    var data = JSON.stringify({
-        "Name": "Teste2r",
-        "Email": "tester@test2er.dk",
-        "Tasks": []
-    });
-    xhr.send(data);
-}
-
 // function addDeveloperToDatabase2() {
 //     var data = {};
 //     data.name = document.getElementById("inputName").value + document.getElementById("inputLastName").value;;
@@ -65,6 +46,15 @@ function loadTablesWithCreates() {
     oReq.open("GET", url);
     oReq.send();
 }
+
+// function loadTablesWithCreatesJQuery() {
+//     $(document).ready(function () {
+//         $.get(url, function (data) {
+//             window.alert("Data Loaded: " + data)
+//         });
+//     });
+// }
+
 
 function loadTableWithDevelopers() {
     var listOfDevelopers = JSON.parse(this.responseText);
