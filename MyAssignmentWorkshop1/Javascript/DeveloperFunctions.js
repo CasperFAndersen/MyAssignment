@@ -3,7 +3,11 @@ window.onload = function () {
     // loadTablesWithCreates();
     // getDevs();
     // stefanTable();
+    testCookie();
+    cookie();
 };
+
+//Creating a cookie
 
 var url = "http://dm.sof60.dk:84/api/Developer";
 
@@ -166,6 +170,13 @@ function stefanTable() {
     oReq.addEventListener("load", jsonToUi);
     oReq.open("GET", "http://dm.sof60.dk:84/api/Developer");
     oReq.send();
+}
+
+function testCookie() {
+    document.cookie = "username=Casper Andersen; expires=Thu, 20 dec 2018 12:00:00 UTC";
+    // var myCookie = document.cookie;
+    alert(document.cookie);
+    console.log(document.cookie);
 }
 
 
