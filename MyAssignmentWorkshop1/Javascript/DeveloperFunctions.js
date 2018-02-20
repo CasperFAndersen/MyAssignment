@@ -5,64 +5,56 @@ window.onload = function () {
     // stefanTable();
 };
 
-//Creating a cookie
-
 var url = "http://dm.sof60.dk:84/api/Developer";
 
-// function addDeveloperToDatabase2() {
-//     var data = {};
-//     data.name = document.getElementById("inputName").value + document.getElementById("inputLastName").value;;
-//     data.lastname = document.getElementById("inputEmail4").value;
-//     var json = JSON.stringify(data);
 
-//     var xhr = new XMLHttpRequest();
-//     xhr.open("POST", url, true);
-//     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-//     xhr.onload = function () {
-//         var users = JSON.parse(xhr.responseText);
-//         if (xhr.readyState == 4 && xhr.status == "201") {
-//             console.table(users);
-//         } else {
-//             console.error(users);
-//         }
-//     }
-//     xhr.send(json);
+function developerAddBtn() {
+    $(document).ready(function () {
+        $("#addDevBtn").click(function () {
+            var name = $("#inputName").val(); //+ " " + $("#inputLastName").val();
+            var email = $("#inputEmail4").val();
+            $.post(url, { Name: name, Email: email });
+        });
+    });
+}
+
+function developerLoadDropdownList() {
+    $(document).ready(function () {
+        $("#loadDropdownListBtn").click(function () {
+
+        });
+    });
+}
+
+
+// function developerDeleteBtn() {
+//     $(document).ready(function () {
+//         $
+//     });
 // }
 
-// function addDeveloperToDatabase() {
-//     var firstName1 = document.getElementById("inputName").value;
-//     var lastName1 = document.getElementById("inputLastName").value;
-//     var email1 = document.getElementById("inputEmail4").value;
-//     // var devObject = {
-//     //     Name = firstName1,
-//     //     Email = email1,
-//     //     Tasks = null
-//     // };
-//     return devObject;
-//     console.log(firstName1 + " " + lastName1 + " " + email1);
+
+// function loadTablesWithCreates() {
+//     var oReq = new XMLHttpRequest();
+//     oReq.addEventListener("load", loadTableWithDevelopers);
+//     oReq.open("GET", url);
+//     oReq.send();
 // }
+
 
 function loadTablesWithCreatesJQuery() {
     $(document).ready(function () {
-        $("tableCreateElements").click(function () {
-            $.get(url, function (data, status) {
-                window.alert("Data: " + data + "\nStatus: " + status);
-                console.log("done");
+        $('#tableCreateElements').click(function () {
+            $.get(url, function (data) {
+                listOfDevelopers = data;
+                loadTableWithDevelopers();
             });
         });
     });
 }
 
-function loadTablesWithCreates() {
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", loadTableWithDevelopers);
-    oReq.open("GET", url);
-    oReq.send();
-}
-
-
 function loadTableWithDevelopers() {
-    var listOfDevelopers = JSON.parse(this.responseText);
+    // var listOfDevelopers = this.responseText;
     const table = document.getElementById('table-of-developers');
     for (let i = 0; i < listOfDevelopers.length; i++) {
         const tr = document.createElement('tr');
@@ -179,6 +171,7 @@ function testCookie() {
     alert(document.cookie);
     console.log(document.cookie);
 }
+
 
 
 

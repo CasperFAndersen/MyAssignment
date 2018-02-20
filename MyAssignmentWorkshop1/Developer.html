@@ -14,133 +14,150 @@
     <link href="Styles/styles.css" rel="stylesheet" />
     <link href="Styles/typography.css" rel="stylesheet" />
     <link href="Styles/colors.css" rel="stylesheet" />
-</head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="Home.html">Welcome</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="Home.html">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Customers.html">Customer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Developer.html">Developer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Projects.html">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Tasks.html">Tasks</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <h2 class="developer-cards">
-        <section>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card w-50 border border-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Casper Froberg Andersen</h5>
-                            <p class="card-text">Casper is currently a computer science student, at the moment learning Html, Css and JavaScript.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card w-50 border border-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">Mikkel Lindstrøm Paulsen</h5>
-                            <p class="card-text">Mikkel er ugens gæst.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </h2>
-    <section class="buttonsForLoadingDevelopers">
-        <a name="tableDivButton" id="tableDivDynamic" class="btn btn-primary" href="#" role="button" onclick="stefanTable();">Load Dynamic Table.</a>
-        <a name="tableWithTableMethodsButton" id="tableWithTableMethods" class="btn btn-primary" href="#" role="button" onclick="getDevs();">Load WithTableMethods Table.</a>
-        <a name="tableCreateElementsButton" id="tableCreateElements" class="btn btn-primary" href="#" role="button">Load CreateElement Table.</a>
-    </section>
-    <form>
-        <div class="form">
-            <div class="form-group col-md-2">
-                <label for="inputName">Name</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Name" required>
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputName">Lastname</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="Lastname" required>
-            </div>
-            <div class="form-group col-md-2">
-                <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
-            </div>
-        </div>
-        <button onclick="loadTablesWithCreatesJQuery()" type="submit" class="btn btn-primary ">Add developer</button>
-    </form>
-    <h3>
-        <section>
-            <div>
-                <table id="table-of-developers" style="width:100%">
-                    <tr>
-                        <th id="devID">ID</th>
-                        <th id="devName">Name</th>
-                        <th id="devEmail">Email</th>
-                        <th id="devTasks">Tasks</th>
-                    </tr>
-                </table>
-            </div>
-        </section>
-        <section>
-            <div>
-                <table id="table-of-developers1" style="width:100%">
-                    <tr>
-                        <th id="devEmail">Email</th>
-                        <th id="devID">ID</th>
-                        <th id="devName">Name</th>
-                    </tr>
-                </table>
-            </div>
-        </section>
-    </h3>
-    <section>
-        <div id="tableDiv">
-        </div>
-    </section>
-    <section>
-        This is the developer page.
-    </section>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="Javascript/DeveloperFunctions.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
-    <cdn>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </cdn>
-</body>
+</head>
+
+<body>
+
+    <body id="homeBody">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="Home.html">Welcome</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="Home.html">Home
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Customers.html">Customer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Developer.html">Developer</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Projects.html">Projects</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Tasks.html">Tasks</a>
+                                    </li>
+                                </ul>
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <form>
+                        <div class="form">
+                            <div class="form-group col-md-2">
+                                <label for="inputName">Name</label>
+                                <input id="inputName" type="text" class="form-control" placeholder="Name" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputLastName">Lastname</label>
+                                <input id="inputLastName" type="text" class="form-control" placeholder="Lastname" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputEmail4">Email</label>
+                                <input id="inputEmail4" type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <button id="addDevBtn" type="submit" class="btn btn-primary">Add developer</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <section class="buttonsForLoadingDevelopers">
+                        <a name="tableDivButton" id="tableDivDynamic" class="btn btn-primary" href="#" role="button" onclick="stefanTable();">Load Dynamic Table.</a>
+                        <a name="tableWithTableMethodsButton" id="tableWithTableMethods" class="btn btn-primary" href="#" role="button" onclick="getDevs();">Load WithTableMethods Table.</a>
+                        <a name="tableCreateElementsButton" id="tableCreateElements" class="btn btn-primary" href="#" role="button">Load CreateElement Table.</a>
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <section>
+                        <div>
+                            <table id="table-of-developers" style="width:100%">
+                                <tr>
+                                    <th id="devID">ID</th>
+                                    <th id="devName">Name</th>
+                                    <th id="devEmail">Email</th>
+                                    <th id="devTasks">Tasks</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+                <div class="col">
+                    <section>
+                        <div>
+                            <table id="table-of-developers1" style="width:100%">
+                                <tr>
+                                    <th id="devEmail">Email</th>
+                                    <th id="devID">ID</th>
+                                    <th id="devName">Name</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+                <div class="col">
+                    <section>
+                        <div id="tableDiv">
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <section>
+            This is the developer page.
+        </section>
+    </body>
+    <script>
+        //Event Handlers
+        loadTablesWithCreatesJQuery();
+        developerAddBtn();
+    </script>
 
 </html>
