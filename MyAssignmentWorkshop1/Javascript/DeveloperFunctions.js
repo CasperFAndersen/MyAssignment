@@ -5,6 +5,13 @@ window.onload = function () {
     // stefanTable();
 };
 
+function loadListOfDevelopers() {
+    $(document).ready(function () {
+        $.get(url, function (data) {
+            listOfDevelopers = data;
+        });
+    });
+}
 var url = "http://dm.sof60.dk:84/api/Developer";
 
 
@@ -18,20 +25,45 @@ function developerAddBtn() {
     });
 }
 
-function developerLoadDropdownList() {
+function developerUpdateBtn() {
     $(document).ready(function () {
         $("#loadDropdownListBtn").click(function () {
-
+            var newName = $("#showSelectedDevName").val();
+            var newEmail = $("#showSelectedDevEmail").val();
+            $.put(url + '/5', { Name: newName, Email: newEmail });
+            devDropdownLoad();
         });
     });
 }
 
+function showSelectedDeveloper() {
+    $('#developerDropdown').change(function () {
+        for (let i = 0; i < listOfDevelopers.length; i++) {
+            if (listOfDevelopers[i].Name != null) {
+                if (listOfDevelopers[i].Name.text == $('#developerDropdown option:selected').text) {
+                    $('#showSelectedDevId').val(listOfDevelopers[i].Id);
+                    $('#showSelectedDevName').val(listOfDevelopers[i].Name);
+                    $('#showSelectedDevEmail').val(listOfDevelopers[i].Email);
+                }
+                else {
+                    i++;
+                }
+            }
+            else {
+                i++;
+            }
+        }
+    });
+}
 
-// function developerDeleteBtn() {
-//     $(document).ready(function () {
-//         $
-//     });
-// }
+// $.ajax({
+//     url: url,
+//     type: 'PUT',
+//     success: function(response) {
+//       ...
+//     }
+//  });
+
 
 
 // function loadTablesWithCreates() {
@@ -41,14 +73,26 @@ function developerLoadDropdownList() {
 //     oReq.send();
 // }
 
-
 function loadTablesWithCreatesJQuery() {
     $(document).ready(function () {
         $('#tableCreateElements').click(function () {
-            $.get(url, function (data) {
-                listOfDevelopers = data;
-                loadTableWithDevelopers();
-            });
+            //     $.get(url, function (data) {
+            //         listOfDevelopers = data;
+            loadTableWithDevelopers();
+        });
+    });
+    // });
+}
+
+function devDropdownLoad() {
+    const devDropDown = document.getElementById('developerDropdown');
+    $(document).ready(function () {
+        $.get(url, function (devListForDropdown) {
+            for (let i = 0; i < devListForDropdown.length; i++) {
+                var option = document.createElement("option");
+                option.text = option.value = devListForDropdown[i].Name;
+                devDropDown.add(option);
+            }
         });
     });
 }
