@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <button id="updateDevBtn" type="submit" class="btn btn-success ">Update developer</button>
+                            <div id="updateDevBtn" class="btn btn-success">Update developer</div>
                         </div>
                     </form>
                 </div>
@@ -114,7 +114,7 @@
                                 <input id="inputEmail4" type="email" class="form-control" placeholder="Email" required>
                             </div>
                         </div>
-                        <button id="addDevBtn" type="submit" class="btn btn-primary">Add developer</button>
+                        <div id="addDevBtn" class="btn btn-primary">Add developer</div>
                     </form>
                 </div>
             </div>
@@ -169,13 +169,17 @@
         </section>
     </body>
     <script>
+        //cookies
+        // checkCookie();
+
+        let listOfDevelopers = null;
         //Event Handlers
         loadListOfDevelopers();
         loadTablesWithCreatesJQuery();
         developerAddBtn();
         developerUpdateBtn();
         devDropdownLoad();
-        showSelectedDeveloper()
+        showSelectedDeveloper();
     </script>
 
 </html>

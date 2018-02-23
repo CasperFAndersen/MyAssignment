@@ -1,17 +1,43 @@
-window.onload = function () {
-    // loadTableWithTasks()
-    // loadTablesWithCreates();
-    // getDevs();
-    // stefanTable();
-};
+const myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXNwZXIiLCJqdGkiOiIyZmU2ZWY0MS04YTYwLTRjNzctODU2Yy1kYzEzMTZhYjcxNTAiLCJuYmYiOjE1MTkzNDE2MjEsImV4cCI6MTUyNDUyNTYyMSwiaXNzIjoiU1dLRyIsImF1ZCI6IkRFVlMifQ.QUzogX4tnjXe5iyORsRV3uhen8Ylm7CC8-w3OzOkGxs";
 
+window.onload = function () {
+};
+// function checkCookie() {
+//     var user = getCookie("username");
+//     if (user != "") {
+//         alert("Welcome again " + user);
+//     } else {
+//         user = prompt("Please enter your name:", "");
+//         if (user != "" && user != null) {
+//             setCookie("username", user, 365);
+//         }
+//     }
+// }
+// api fra seb
 function loadListOfDevelopers() {
     $(document).ready(function () {
-        $.get(url, function (data) {
-            listOfDevelopers = data;
+        $.ajax({
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            // dataType: 'application/json',
+            url: 'http://centisoft.gotomain.net/api/v1/developer',
+            headers: { 'Authorization': 'bearer ' + myToken },
+            success: function (res) {
+                listOfDevelopers = JSON.parse(res);
+            }
         });
     });
 }
+
+
+//gammel api fra lærer
+// function loadListOfDevelopers() {
+//     $(document).ready(function () {
+//         $.get(url, function (data) {
+//             listOfDevelopers = data;
+//         });
+//     });
+// }
 var url = "http://dm.sof60.dk:84/api/Developer";
 
 
@@ -27,42 +53,44 @@ function developerAddBtn() {
 
 function developerUpdateBtn() {
     $(document).ready(function () {
-        $("#loadDropdownListBtn").click(function () {
+        $("#updateDevBtn").click(function () {
             var newName = $("#showSelectedDevName").val();
             var newEmail = $("#showSelectedDevEmail").val();
-            $.put(url + '/5', { Name: newName, Email: newEmail });
-            devDropdownLoad();
+            // $.put(url + $("#showSelectedDevId").val(), { Name: newName, Email: newEmail });
+            $.ajax({
+                url: url + "/" + $("#showSelectedDevId").val(),
+                type: 'PUT',
+                data: { 'Name': newName, 'Email': newEmail },
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
         });
     });
 }
 
 function showSelectedDeveloper() {
     $('#developerDropdown').change(function () {
+        // $('#updateDevBtn').removeClass(disabled);
         for (let i = 0; i < listOfDevelopers.length; i++) {
-            if (listOfDevelopers[i].Name != null) {
-                if (listOfDevelopers[i].Name.text == $('#developerDropdown option:selected').text) {
-                    $('#showSelectedDevId').val(listOfDevelopers[i].Id);
-                    $('#showSelectedDevName').val(listOfDevelopers[i].Name);
-                    $('#showSelectedDevEmail').val(listOfDevelopers[i].Email);
-                }
-                else {
-                    i++;
-                }
+            if (listOfDevelopers[i].Name !== null && listOfDevelopers[i].Name == $('#developerDropdown').val()) {
+                $("#showSelectedDevId").val(listOfDevelopers[i].Id);
+                $("#showSelectedDevName").val(listOfDevelopers[i].Name);
+                $("#showSelectedDevEmail").val(listOfDevelopers[i].Email);
             }
-            else {
-                i++;
-            }
+            // else if (listOfDevelopers[i].Name == null) {
+            //     $("#showSelectedDevId").val("");
+            //     $("#showSelectedDevName").val("");
+            //     $("#showSelectedDevEmail").val("");
+            // }
         }
     });
 }
 
-// $.ajax({
-//     url: url,
-//     type: 'PUT',
-//     success: function(response) {
-//       ...
-//     }
-//  });
+
 
 
 
@@ -83,6 +111,8 @@ function loadTablesWithCreatesJQuery() {
     });
     // });
 }
+
+
 
 function devDropdownLoad() {
     const devDropDown = document.getElementById('developerDropdown');
