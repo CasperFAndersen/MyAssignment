@@ -23,7 +23,7 @@ function loadListOfDevelopers() {
             url: 'http://centisoft.gotomain.net/api/v1/developer',
             headers: { 'Authorization': 'bearer ' + myToken },
             success: function (res) {
-                listOfDevelopers = JSON.parse(res);
+                var listOfDevelopers = JSON.parse(res);
             }
         });
     });
@@ -117,13 +117,11 @@ function loadTablesWithCreatesJQuery() {
 function devDropdownLoad() {
     const devDropDown = document.getElementById('developerDropdown');
     $(document).ready(function () {
-        $.get(url, function (devListForDropdown) {
-            for (let i = 0; i < devListForDropdown.length; i++) {
-                var option = document.createElement("option");
-                option.text = option.value = devListForDropdown[i].Name;
-                devDropDown.add(option);
-            }
-        });
+        for (let i = 0; i < listOfDevelopers.length; i++) {
+            var option = document.createElement("option");
+            option.text = option.value = listOfDevelopers[i].Name;
+            devDropDown.add(option);
+        }
     });
 }
 
