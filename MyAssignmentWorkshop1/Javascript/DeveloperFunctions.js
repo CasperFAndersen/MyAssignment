@@ -3,7 +3,7 @@ const myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXNwZXIiLCJqdG
 window.onload = function () {
 };
 
-
+let sebUrl = "http://centisoft.gotomain.net/api/v1/developer";
 var listOfDevelopers;
 
 function loadListOfDevelopers() {
@@ -16,6 +16,8 @@ function loadListOfDevelopers() {
             headers: { 'Authorization': 'bearer ' + myToken },
             success: function (res) {
                 listOfDevelopers = JSON.parse(res);
+                loadTableWithDevelopers(listOfDevelopers);
+                devDropdownLoad(listOfDevelopers);
             }
         });
     });
@@ -30,8 +32,7 @@ function loadListOfDevelopers() {
 //         });
 //     });
 // }
-var url = "http://dm.sof60.dk:84/api/Developer";
-
+let url = "http://dm.sof60.dk:84/api/Developer";
 
 function developerAddBtn() {
     $(document).ready(function () {
@@ -48,13 +49,15 @@ function developerUpdateBtn() {
         $("#updateDevBtn").click(function () {
             var newName = $("#showSelectedDevName").val();
             var newEmail = $("#showSelectedDevEmail").val();
-            // $.put(url + $("#showSelectedDevId").val(), { Name: newName, Email: newEmail });
             $.ajax({
-                url: url + "/" + $("#showSelectedDevId").val(),
+                url: sebUrl + "/" + $("#showSelectedDevId").val(),
                 type: 'PUT',
-                data: { 'Name': newName, 'Email': newEmail },
+                data: JSON.stringify({ 'Name': newName, 'Email': newEmail }),
+                contentType: 'application/json; charset=utf-8',
+                headers: { 'Authorization': 'bearer ' + myToken },
                 success: function (response) {
                     console.log(response);
+                    loadListOfDevelopers();
                 },
                 error: function (response) {
                     console.log(response);
@@ -64,20 +67,18 @@ function developerUpdateBtn() {
     });
 }
 
+
+
 function showSelectedDeveloper() {
     $('#developerDropdown').change(function () {
-        // $('#updateDevBtn').removeClass(disabled);
+        var e = document.getElementById("developerDropdown");
+        var strUser = e.options[e.selectedIndex].value;
         for (let i = 0; i < listOfDevelopers.length; i++) {
-            if (listOfDevelopers[i].Name !== null && listOfDevelopers[i].Name == $('#developerDropdown').val()) {
+            if (listOfDevelopers[i].Name !== null && listOfDevelopers[i].Id == strUser) {
                 $("#showSelectedDevId").val(listOfDevelopers[i].Id);
                 $("#showSelectedDevName").val(listOfDevelopers[i].Name);
                 $("#showSelectedDevEmail").val(listOfDevelopers[i].Email);
             }
-            // else if (listOfDevelopers[i].Name == null) {
-            //     $("#showSelectedDevId").val("");
-            //     $("#showSelectedDevName").val("");
-            //     $("#showSelectedDevEmail").val("");
-            // }
         }
     });
 }
@@ -93,35 +94,37 @@ function loadTablesWithCreatesJQuery() {
 
 
 
-function devDropdownLoad() {
+function devDropdownLoad(data) {
     const devDropDown = document.getElementById('developerDropdown');
+    // $('#developerDropdown').empty();
     $(document).ready(function () {
-        for (let i = 0; i < listOfDevelopers.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             var option = document.createElement("option");
-            option.text = option.value = listOfDevelopers[i].Name;
+            option.value = data[i].Id;
+            option.text = data[i].Name;
             devDropDown.add(option);
         }
     });
 }
 
-function loadTableWithDevelopers() {
+function loadTableWithDevelopers(data) {
     const table = document.getElementById('table-of-developers');
-    for (let i = 0; i < listOfDevelopers.length; i++) {
+    data.forEach(element => {
         const tr = document.createElement('tr');
         const td1 = document.createElement('td');
         const td2 = document.createElement('td');
         const td3 = document.createElement('td');
         const td4 = document.createElement('td');
-        td1.appendChild(document.createTextNode(listOfDevelopers[i].Id));
-        td2.appendChild(document.createTextNode(listOfDevelopers[i].Name));
-        td3.appendChild(document.createTextNode(listOfDevelopers[i].Email));
-        td4.appendChild(document.createTextNode(listOfDevelopers[i].Tasks));
+        td1.appendChild(document.createTextNode(element.Id));
+        td2.appendChild(document.createTextNode(element.Name));
+        td3.appendChild(document.createTextNode(element.Email));
+        td4.appendChild(document.createTextNode(element.Tasks));
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
         table.appendChild(tr);
-    }
+    });
 }
 
 
