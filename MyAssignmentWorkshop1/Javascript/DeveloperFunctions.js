@@ -2,18 +2,10 @@ const myToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYXNwZXIiLCJqdG
 
 window.onload = function () {
 };
-// function checkCookie() {
-//     var user = getCookie("username");
-//     if (user != "") {
-//         alert("Welcome again " + user);
-//     } else {
-//         user = prompt("Please enter your name:", "");
-//         if (user != "" && user != null) {
-//             setCookie("username", user, 365);
-//         }
-//     }
-// }
-// api fra seb
+
+
+var listOfDevelopers;
+
 function loadListOfDevelopers() {
     $(document).ready(function () {
         $.ajax({
@@ -23,7 +15,7 @@ function loadListOfDevelopers() {
             url: 'http://centisoft.gotomain.net/api/v1/developer',
             headers: { 'Authorization': 'bearer ' + myToken },
             success: function (res) {
-                var listOfDevelopers = JSON.parse(res);
+                listOfDevelopers = JSON.parse(res);
             }
         });
     });
@@ -91,25 +83,12 @@ function showSelectedDeveloper() {
 }
 
 
-
-
-
-// function loadTablesWithCreates() {
-//     var oReq = new XMLHttpRequest();
-//     oReq.addEventListener("load", loadTableWithDevelopers);
-//     oReq.open("GET", url);
-//     oReq.send();
-// }
-
 function loadTablesWithCreatesJQuery() {
     $(document).ready(function () {
         $('#tableCreateElements').click(function () {
-            //     $.get(url, function (data) {
-            //         listOfDevelopers = data;
             loadTableWithDevelopers();
         });
     });
-    // });
 }
 
 
@@ -126,7 +105,6 @@ function devDropdownLoad() {
 }
 
 function loadTableWithDevelopers() {
-    // var listOfDevelopers = this.responseText;
     const table = document.getElementById('table-of-developers');
     for (let i = 0; i < listOfDevelopers.length; i++) {
         const tr = document.createElement('tr');
